@@ -1,25 +1,30 @@
 
 <nav class="navbar navbar-expand-lg container">
-
   <ul class="navbar navbar-nav">
     <li>
-      <button (click)="onGetAllUsersStories()" class="btn btn-sm  m-1"
-              [ngClass] = "isChecked?'btn-info':'btn-outline-info'">All</button>
+      <button
+        (click)="onGetAllUsersStories()" class="btn btn-sm  m-1"
+        [ngClass] = "isChecked?'btn-info':'btn-outline-info'">All
+      </button>
     </li>
     <li>
-      <button (click)="onGetActivatedUsersStories()" class="btn btn-sm m-1"
-              [ngClass] = "isChecked?'btn-info':'btn-outline-info'">Active</button>
+      <button
+        (click)="onGetActivatedUsersStories()" class="btn btn-sm m-1"
+        [ngClass] = "isChecked?'btn-info':'btn-outline-info'">Active
+      </button>
     </li>
     <li>
-      <button (click)="onGetCompletedUserStory()" class="btn btn-sm btn-outline-info m-1">Completed</button>
+      <button
+        (click)="onGetCompletedUserStory()" class="btn btn-sm m-1"
+         [ngClass] = "isChecked?'btn-info':'btn-outline-info'">Completed
+      </button>
     </li>
-
   </ul>
-
 </nav>
 
+<!-- View which appear when user click on button All-->
 <div class="container" *ngIf="isAll">
-
+  <!-- Form for adding a new UserStory-->
   <form [formGroup]="userFormGroup" type="text" class="form-inline">
     <input ngModel name="keyWord" type="text" formControlName="details"
            [ngClass]="{'is-invalid':submitted && userFormGroup.controls.details.errors}">
@@ -30,43 +35,54 @@
       <span class="fa fa-plus-circle">Add</span>
     </button>
   </form>
+  <!-- End form add new UserStory-->
 
+  <!--Checkbox for activating and deactivating an story-->
   <div class="form-check" *ngFor=" let u of usersStories">
     <input (click)="onActivateUserStory(u)" class="form-check-input" type="checkbox" value="" id="flexCheckDefault"
            *ngIf="u.activate">
 
-    <input (click)="onDesactivateUserStory(u)" class="form-check-input" type="checkbox" value="" id="flexCheckDefault2"
+    <input (click)="onDeactivateUserStory(u)" class="form-check-input" type="checkbox" value="" id="flexCheckDefault2"
            *ngIf="!u.activate" checked >
     <label class="form-check-label" for="flexCheckDefault">
       {{u.details}}
     </label>
   </div>
-
+  <!-- End Checkbox for activate and deactivate an story-->
 </div>
+<!-- End view button All-->
 
+<!-- View which appear when user click on button Activate-->
 <div class="container" *ngIf="isActivate">
 
+  <!--Table for displaying all activated user story-->
   <table *ngIf="usersStories" class="table tab-content">
       <tr *ngFor=" let u of usersStories">
         <td>
+          <!--Checkbox for activating and deactivating an story-->
           <input (click)="onActivateUserStory(u)" class="form-check-input" type="checkbox" value=""
                  *ngIf="u.activate">
-          <input (click)="onDesactivateUserStory(u)" class="form-check-input" type="checkbox" value=""
+          <input (click)="onDeactivateUserStory(u)" class="form-check-input" type="checkbox" value=""
                  *ngIf="!u.activate" checked >
+          <!-- End Checkbox for activating and deactivating an story-->
         </td>
         <td>{{u.details}}</td>
-
         <td>
+          <!--Button For completing an user Story -->
           <button (click)="onCompleteUserStory(u)" *ngIf="isActivate"  class="btn btn-outline-danger btn-sm">
             <span>Complete</span>
           </button>
+          <!--End Button For completing an user Story -->
         </td>
       </tr>
     </table>
+  <!-- End Table-->
 </div>
+<!-- End view button Activate-->
 
+<!-- When user click on button Complete-->
 <div class="container" *ngIf="isComplete">
-
+  <!--Table for displaying all completed user story-->
   <table *ngIf="usersStories" class="table tab-pane">
       <tr *ngFor=" let u of usersStories">
         <td>
@@ -75,16 +91,19 @@
         <td>{{u.details}}</td>
 
         <td>
+          <!--Button For deleting one completed user story-->
           <button (click)="onDeleteUserStory(u)" class="btn btn-outline-danger btn-sm">
             <span class="fa fa-trash"></span>
           </button>
         </td>
       </tr>
     </table>
+  <!--End Table-->
 
+  <!--Button For deleting all completed user story-->
   <button (click)="onDeleteAllCompleteStories()" class="btn btn-danger">
     <span class="fa fa-trash"></span>
   </button>
-
 </div>
+<!-- End view button Complete-->
 

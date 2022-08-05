@@ -41,19 +41,17 @@ export class UserStoryService {
       let baseUrl = environment.baseUrl;
       userstory.completed=!userstory.completed;
       userstory.activate=!userstory.activate;
-      userstory.details = "Task done";
+      //userstory.details = "Task done";
       return this.http.put<UserStory>(baseUrl+"/user_stories/"+userstory.id, userstory);
     }
 
     deleteUserStory(userStory:UserStory):Observable<void>{
       let baseUrl = environment.baseUrl;
-      //userStory.activate=!userStory.activate;
       return this.http.delete<void>(baseUrl+"/user_stories/"+userStory.id);
     }
 
   deleteAllCompleteUserStory(userStory:UserStory):Observable<void>{
     let baseUrl = environment.baseUrl;
-    //userStory.activate=!userStory.activate;
     return this.http.delete<void>(baseUrl+"/user_stories/"+userStory.id);
   }
 

@@ -17,9 +17,6 @@ export class UserStoryComponent implements OnInit {
   userFormGroup!:FormGroup;
   submitted:boolean = false;
 
-  activateeUsersStories:UserStory[] |null = null;
-  completeUsersStories:UserStory[] |null = null;
-
   constructor(private userStoryService:UserStoryService,private fb:FormBuilder) { }
 
   ngOnInit(): void {
@@ -63,21 +60,20 @@ export class UserStoryComponent implements OnInit {
     this.isActivate = false;
     this.isComplete = true;
     this.isAll = false;
-    this.userStoryService.getCompletedUserStories().subscribe(data =>{
-        this.usersStories = data;
+    this.userStoryService.getCompletedUserStories().subscribe(
+      data =>{
+            this.usersStories = data;
       },
       error => {
-        console.log(error)
-      }
-
-    )
+            console.log(error)
+      })
   }
 
   onActivateUserStory(u:UserStory) {
     this.userStoryService.activateUserStory(u)
         .subscribe(data =>{
           u.activate = data.activate;
-          alert("Activated successful");
+          alert("Activated successfully");
           if (this.isAll)
             this.onGetAllUsersStories();
           else
@@ -89,24 +85,24 @@ export class UserStoryComponent implements OnInit {
     this.userStoryService.completeUserStroy(u)
       .subscribe(data =>{
         u.activate = data.activate;
-        alert("Task completed successful");
+        alert("Task completed successfully");
         this.onGetActivatedUsersStories()
       })
   }
 
   onDeleteUserStory(u: UserStory) {
     this.userStoryService.deleteUserStory(u).toPromise();
-    alert("Task deleted successful");
+    alert("Task deleted successfully");
     this.onGetCompletedUserStory();
     return true
   }
 
-  onDesactivateUserStory(u:UserStory) {
+  onDeactivateUserStory(u:UserStory) {
     if (!this.isComplete)
     this.userStoryService.activateUserStory(u)
       .subscribe(data =>{
         u.activate = data.activate;
-        alert("Desabled successful");
+        alert("Deactivated successfully");
         if (this.isAll)
           this.onGetAllUsersStories();
         else
@@ -119,7 +115,7 @@ export class UserStoryComponent implements OnInit {
     if (this.userFormGroup.invalid)return;
     this.userStoryService.saveUserStroy(this.userFormGroup.value)
       .subscribe(data =>{
-        alert("User story saveb successful");
+        alert("User story save successfully");
         this.onGetAllUsersStories();
       })
   }
@@ -132,9 +128,7 @@ export class UserStoryComponent implements OnInit {
         });
       });
     }
-    alert("Task deleted successful");
-
-    /**/
+    alert("Task deleted successfully");
 
   }
 }

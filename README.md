@@ -4,7 +4,29 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 ## Development server
 
-Run `npm start` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+##### Installed Dependencies 
+
+After downloading run `npm install` 
+
+After running the `npm install` and you noticed that there are missing dependencies please install them by
+following those instructions.
+
+`json-server` is used for storing data in JsonFormat in a local file named db.json
+`npm install --save json-server`
+
+`Concurrently` is installed for being able to start the json-server and the angular dev 
+server in one command `npm start` 
+
+`npm install --save concurrently`
+
+`JQUERY npm install --save jquery`
+
+`Bootstrap npm install --save bootstrap`
+
+`Font-awesome` for icons 
+`npm install --save font-awesome`
+
+To Start the project Run `npm start` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
 ## Code scaffolding
 
