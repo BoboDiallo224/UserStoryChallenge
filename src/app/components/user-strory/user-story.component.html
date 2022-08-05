@@ -1,0 +1,90 @@
+
+<nav class="navbar navbar-expand-lg container">
+
+  <ul class="navbar navbar-nav">
+    <li>
+      <button (click)="onGetAllUsersStories()" class="btn btn-sm  m-1"
+              [ngClass] = "isChecked?'btn-info':'btn-outline-info'">All</button>
+    </li>
+    <li>
+      <button (click)="onGetActivatedUsersStories()" class="btn btn-sm m-1"
+              [ngClass] = "isChecked?'btn-info':'btn-outline-info'">Active</button>
+    </li>
+    <li>
+      <button (click)="onGetCompletedUserStory()" class="btn btn-sm btn-outline-info m-1">Completed</button>
+    </li>
+
+  </ul>
+
+</nav>
+
+<div class="container" *ngIf="isAll">
+
+  <form [formGroup]="userFormGroup" type="text" class="form-inline">
+    <input ngModel name="keyWord" type="text" formControlName="details"
+           [ngClass]="{'is-invalid':submitted && userFormGroup.controls.details.errors}">
+    <div *ngIf="submitted && userFormGroup.controls.details.errors" class="invalid-feedback" >
+      <div *ngIf="userFormGroup.controls.details.errors.required">Detail is required</div>
+    </div>
+    <button (click)="onAddUserStory()" class="btn btn-sm btn-primary" style="margin-left: 2px">
+      <span class="fa fa-plus-circle">Add</span>
+    </button>
+  </form>
+
+  <div class="form-check" *ngFor=" let u of usersStories">
+    <input (click)="onActivateUserStory(u)" class="form-check-input" type="checkbox" value="" id="flexCheckDefault"
+           *ngIf="u.activate">
+
+    <input (click)="onDesactivateUserStory(u)" class="form-check-input" type="checkbox" value="" id="flexCheckDefault2"
+           *ngIf="!u.activate" checked >
+    <label class="form-check-label" for="flexCheckDefault">
+      {{u.details}}
+    </label>
+  </div>
+
+</div>
+
+<div class="container" *ngIf="isActivate">
+
+  <table *ngIf="usersStories" class="table tab-content">
+      <tr *ngFor=" let u of usersStories">
+        <td>
+          <input (click)="onActivateUserStory(u)" class="form-check-input" type="checkbox" value=""
+                 *ngIf="u.activate">
+          <input (click)="onDesactivateUserStory(u)" class="form-check-input" type="checkbox" value=""
+                 *ngIf="!u.activate" checked >
+        </td>
+        <td>{{u.details}}</td>
+
+        <td>
+          <button (click)="onCompleteUserStory(u)" *ngIf="isActivate"  class="btn btn-outline-danger btn-sm">
+            <span>Complete</span>
+          </button>
+        </td>
+      </tr>
+    </table>
+</div>
+
+<div class="container" *ngIf="isComplete">
+
+  <table *ngIf="usersStories" class="table tab-pane">
+      <tr *ngFor=" let u of usersStories">
+        <td>
+          <input class="form-check-input" type="checkbox" value="" checked>
+        </td>
+        <td>{{u.details}}</td>
+
+        <td>
+          <button (click)="onDeleteUserStory(u)" class="btn btn-outline-danger btn-sm">
+            <span class="fa fa-trash"></span>
+          </button>
+        </td>
+      </tr>
+    </table>
+
+  <button (click)="onDeleteAllCompleteStories()" class="btn btn-danger">
+    <span class="fa fa-trash"></span>
+  </button>
+
+</div>
+

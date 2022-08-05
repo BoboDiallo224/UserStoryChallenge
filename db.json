@@ -1,0 +1,81 @@
+{
+  "user_stories": [
+    {
+      "details": "d",
+      "activate": false,
+      "completed": false,
+      "id": 4
+    },
+    {
+      "details": "Task done",
+      "activate": false,
+      "completed": true,
+      "id": 5
+    },
+    {
+      "details": "ddff",
+      "activate": false,
+      "completed": false,
+      "id": 6
+    },
+    {
+      "details": "Task done",
+      "activate": false,
+      "completed": true,
+      "id": 7
+    },
+    {
+      "details": "sdd",
+      "activate": true,
+      "completed": false,
+      "id": 8
+    },
+    {
+      "details": "sddqqq",
+      "activate": true,
+      "completed": false,
+      "id": 9
+    }
+  ],
+  "products": [
+    {
+      "id": 1,
+      "designProd": "MAyonaise",
+      "refProd": "Myd",
+      "quantitMinProd": "555555",
+      "quantitProd": 0,
+      "PrixUnit": 200,
+      "MontTotalStock": 300,
+      "quantitTotStock": 5,
+      "obeservationStock": "commender",
+      "selected": true,
+      "availiable": true
+    },
+    {
+      "id": 2,
+      "designProd": "LAit",
+      "refProd": "LT",
+      "quantitMinProd": 5,
+      "quantitProd": 0,
+      "PrixUnit": 200,
+      "MontTotalStock": 300,
+      "quantitTotStock": 5,
+      "obeservationStock": "commender",
+      "selected": true,
+      "availiable": true
+    },
+    {
+      "id": 3,
+      "designProd": "fff",
+      "refProd": "ffff",
+      "quantitMinProd": 0,
+      "quantitProd": 0,
+      "PrixUnit": 0,
+      "MontTotalStock": 0,
+      "quantitTotStock": 0,
+      "obeservationStock": "fff",
+      "selected": true,
+      "availiable": true
+    }
+  ]
+}
