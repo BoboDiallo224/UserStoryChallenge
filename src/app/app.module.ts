@@ -6,7 +6,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NavBarComponent } from './components/nav-bar/nav-bar.component';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
-import {UserStoryComponent} from "./components/user-strory/user-story.component";
+import {UserStoryComponent} from "./components/user-story/user-story.component";
 import {UserStoryService} from "./services/user-story.service";
 
 @NgModule({

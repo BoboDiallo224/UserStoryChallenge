@@ -6,9 +6,10 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 ##### Installed Dependencies 
 
+Install NodeJs from [NodeJs Official Page](https://nodejs.org/en).
 After downloading run `npm install` 
 
-After running the `npm install` and you noticed that there are missing dependencies please install them by
+After running the `npm install` and if you noticed that there are missing dependencies please install them by
 following those instructions.
 
 `json-server` is used for storing data in JsonFormat in a local file named db.json
