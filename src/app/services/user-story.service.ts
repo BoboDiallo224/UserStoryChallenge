@@ -1,4 +1,4 @@
-import { HttpClient } from "@angular/common/http";
+import {HttpClient, HttpHeaders} from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { environment } from "src/environments/environment";
 import { Observable } from 'rxjs';
@@ -7,9 +7,18 @@ import {UserStory} from "../entities/user-story.entitie";
 @Injectable({providedIn:"root"})
 export class UserStoryService {
    baseUrl = "http://localhost:3000";
+  corsHeaders:HttpHeaders;
     constructor(private http:HttpClient){
-    }
+      this.corsHeaders = new HttpHeaders({
+        'Content-Type': 'application/json',
+        'Accept': 'application/json',
+        'Access-Control-Allow-Origin': '*',
+        'Access-Control-Allow-Headers': '*',
+        "Access-Control-Request-Method": "*",
+        "Access-Control-Request-Headers": "*"
+      });
 
+    }
     getAllUsersStories():Observable<UserStory[]>{
         //let baseUrl =(Math.random()> 0.0)?environment.baseUrl:environment.unreachableHost;
         //let baseUrl = environment.baseUrl;
